@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
+
+    <title>Psychic Game</title>
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <div class="header">
+        <h1><strong>The Psychic Game</strong></h1>
+      </div> <!-- Header end-->
+
+      <h4>Guess what letter I'm thinking of </h4>
+
+      <div class="gameStatus">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-success" id="wins">Wins: 0</li>
+          <li class="list-group-item list-group-item-danger" id="losses">Losses: 0</li>
+          <li class="list-group-item list-group-item-warning" id="guesses">Guesses Left: 9</li>
+          <li class="list-group-item list-group-item-info" id="yourGuesses">Your Guesses so far: </li>
+        </ul>
+      </div> <!-- game div end -->
+    </div> <!-- main container end-->
+
+    <!-- <script type="text/javascript" href="assets/assets/javascript/game.js"></script> -->
+
+    <script type="text/javascript">
+
+      var possibleInputs = ['a','b','c','d','e','f','g','h','i','j','k','l',
+       'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+      var wins = 0;
+      var losses = 0;
+      var guessesLeft= 9;
+      var yourGuess = [];
+
+      document.onkeyup = function(event){
+
+        // track which key is pressed
+        var userGuess= event.key;
+        // TODO: document.getElementById("yourGuesses").innerHTML = "our Guesses so far" + yourGuess.join(', ');
+
+        // Send a source to computer for its random guess in this range
+        var computerGuess = possibleInputs[Math.floor(Math.random() * possibleInputs.length)];
+        console.log(computerGuess);
+
+        // if user enter a correct guess then add to the win otherwise rdecrease guesses one
+        if (userGuess === computerGuess){
+          wins++;
+          document.getElementById("wins").innerHTML = "Wins: " + wins;
+          alert("<h2>Good Job!</h2>");
+          console.log("Wins " + win);
+
+        } else {
+          guesses--;
+          document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesLeft;
+          alert("<h2>You lost another guess!</h2>");
+          console.log("Guesses Left " + guessesLeft);
+        }
+
+        // Check if user lost are guesses
+        if(guesses === 0){
+          losses++;
+          document.getElementById("losses").innerHTML = "Losses: " + losses;
+          alert("<h2>GAME OVER!</h2>");
+          console.log("Losses " + losses);
+        }
+      };
+
+    </script>
+  </body>
+
+</html>
