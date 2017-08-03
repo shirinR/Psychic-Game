@@ -35,11 +35,11 @@
       </div> <!-- game div end -->
     </div> <!-- main container end-->
 
-    <div class="footer">
+    <!-- <div class="footer">
         <div class="container">
             <p class="copyright">&copy; Copyright 2017 Shirin Rad</p>
         </div>
-    </div>
+    </div> -->
 
     <!-- <script type="text/javascript" href="assets/assets/javascript/game.js"></script> -->
 
@@ -57,7 +57,7 @@
 
         // track which key is pressed
         var userGuess= event.key;
-        // TODO: document.getElementById("yourGuesses").innerHTML = "our Guesses so far" + yourGuess.join(', ');
+
 
         // Send a source to computer for its random guess in this range
         var computerGuess = possibleInputs[Math.floor(Math.random() * possibleInputs.length)];
@@ -67,23 +67,26 @@
         if (userGuess === computerGuess){
           wins++;
           document.getElementById("wins").innerHTML = "Wins: " + wins;
-          alert("<h2>Good Job!</h2>");
-          console.log("Wins " + win);
-
+          alert("Good Job!");
+          // console.log("Wins " + win);
         } else {
-          guesses--;
-          document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesLeft;
-          alert("<h2>You lost another guess!</h2>");
-          console.log("Guesses Left " + guessesLeft);
+          // while(guessesLeft > -1){
+            guessesLeft--;
+            document.getElementById("guesses").innerHTML = "Guesses Left: " + guessesLeft;
+            alert("You lost another guess!");
+            console.log("Guesses Left " + guessesLeft);
+            yourGuess.push(userGuess);
+          // }
         }
 
         // Check if user lost are guesses
         if(guesses === 0){
           losses++;
           document.getElementById("losses").innerHTML = "Losses: " + losses;
-          alert("<h2>GAME OVER!</h2>");
+          alert("GAME OVER!");
           console.log("Losses " + losses);
         }
+        document.getElementById("yourGuesses").innerHTML = "Your Guesses so far: " + yourGuess.join(', ');
       };
 
     </script>
