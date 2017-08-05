@@ -1,0 +1,10 @@
+body{
+  background-image: url("../images/TEMPLAT.JPG");
+  background-size: 100%;
+}
+
+#gameStatus{
+  width: 50%;
+  color:red;
+  font-style: italic;
+}

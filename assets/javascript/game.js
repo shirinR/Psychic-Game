@@ -9,10 +9,19 @@ var losses = 0;
 var guessesLeft= 9;
 var yourGuess = [];
 
+function resetVal(){
+  wins = 0;
+  losses = 0;
+  guessesLeft= 9;
+  yourGuess = [];
+}
+
 document.onkeyup = function(event){
+
 
   // track which key is pressed
   var userGuess= event.key;
+
 
   // Send a source to computer for its random guess in this range
   var computerGuess = possibleInputs[Math.floor(Math.random() * possibleInputs.length)];
@@ -36,10 +45,7 @@ document.onkeyup = function(event){
     document.getElementById("losses").innerHTML = "Losses: " + losses;
     alert("GAME OVER!");
 
-    // document.getElementById("losses").reset();
-    // document.getElementById("guesses").reset();
-    // document.getElementById("wins").reset();
-    // document.getElementById("yourGuesses").reset();
+    resetVal();
   }
   document.getElementById("yourGuesses").innerHTML = "Your Guesses so far: " + yourGuess.join(', ');
 };
